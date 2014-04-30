@@ -7,6 +7,6 @@ GrailsSample
 
 
 Things to note:
-1) Currently cannot register or logout
+1) Currently cannot register
 2) Can login with the usernames: john, kyle, batman
 3) The password is password.
