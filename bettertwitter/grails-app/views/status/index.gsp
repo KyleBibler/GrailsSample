@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta name="layout" content="main"/>
-	<title>What are you doing?</title>
+	<title>Status</title>
 	<g:javascript library="jquery" />
 </head>
 <body>
@@ -22,7 +22,7 @@
 			<g:formRemote url="[action: 'updateStatus']" 
 			update="messages" name="updateStatusForm"
 			onSuccess="document.updateStatusForm.message.value=''">
-				<g:textArea name="message" value=""/><br/>
+				<textArea style="resize: none; width: 50%" rows="3" class="form-control" name="message" value="" placeholder="Something awesome!"></textArea><br/>
 				<g:submitButton class="btn btn-success" name="Update Status"
 				onclick="return confirm('${message(code: 'delete.confirm', 'default': 'Are you sure you want to post this? Read it to yourself first.')}');"/>
 			</g:formRemote>

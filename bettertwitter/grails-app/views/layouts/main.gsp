@@ -12,32 +12,53 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css">
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap-theme.css')}" type="text/css">
 
 		<nav class="navbar navbar-inverse" role="navigation">
 		  <div class="container-fluid">
 		    <!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header">		      
-		      	<a class="navbar-brand" href="/bettertwitter/">Better Twitter</a>
-		     	<sec:ifLoggedIn>		
-		     	<p class="navbar-text">
-				Logged in as: <sec:loggedInUserInfo field="username"></sec:loggedInUserInfo>	
-				</p>	
+		    <div class="navbar-header">
+      		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+	      	</button>
+      		<a class="navbar-brand" href="/bettertwitter">Better Twitter</a>
+    		</div>
+		    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+		    	<sec:ifLoggedIn>		
+			     	<p class="navbar-text">
+					Logged in as: <sec:loggedInUserInfo field="username"></sec:loggedInUserInfo>	
+					</p>
+					<div class='navbar-nav navbar-form'>
+						<a href='/bettertwitter/j_spring_security_logout'>
+							<Button class="btn btn-danger" controller='logout' action='auth'>Logout</Button>
+						</a>
+					</div>	
 				</sec:ifLoggedIn>
-		    </div>
+				<sec:ifNotLoggedIn>
+					<div class="navbar-nav navbar-form">
+						<a href='login/auth'>
+							<Button class="btn btn-success" controller='login' action='auth'>Login</Button>
+						</a>
+						<!-- <a href='register'>
+							<Button class="btn btn-info">Register</Button>
+						</a> -->
+					</div>
+				</sec:ifNotLoggedIn>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
-		    <div class="navbar-form">       
-		        <div class ="searchForm navbar-nav pull-right">
-					<g:form controller="searchable">
-						<g:textField class="form-control" placeholder="Search for Users to Follow" name="q" value=""></g:textField>
-						<g:submitButton class="btn btn-info" name="Search"></g:submitButton>
-					</g:form>
+			    <div class="navbar-form">       
+			        <div class ="searchForm navbar-nav pull-right">
+						<g:form controller="searchable">
+							<g:textField class="form-control" placeholder="Search for Users to Follow" name="q" value=""></g:textField>
+							<g:submitButton class="btn btn-info" name="Search"></g:submitButton>
+						</g:form>
+					</div>
 				</div>
-			</div>
-		       <!--  <button type="submit" class="btn btn-default">Search!</button> -->
-		      
-		    
-		  </div><!-- /.container-fluid -->
+			</div>		    
+		  </div>
 		</nav>
 
 
@@ -47,9 +68,6 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<!--
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
-		-->
 		
 
 		<g:layoutBody/>
